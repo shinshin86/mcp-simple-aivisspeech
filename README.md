@@ -27,7 +27,7 @@ A Model Context Protocol (MCP) server for seamless integration with AivisSpeech 
 
 ## MCP Simple AivisSpeech Configuration
 
-### Using Claude Code (Recommended)
+### Using Claude Code
 
 The easiest way to add this MCP server is using Claude Code:
 

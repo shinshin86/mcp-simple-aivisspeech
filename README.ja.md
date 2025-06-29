@@ -27,7 +27,7 @@ AivisSpeech音声合成エンジンとシームレスに統合するためのMod
 
 ## MCP Simple AivisSpeechの設定方法
 
-### Claude Codeを使用した設定（推奨）
+### Claude Codeを使用した設定
 
 Claude Codeを使用すると、簡単にMCPサーバーを追加できます：
 
