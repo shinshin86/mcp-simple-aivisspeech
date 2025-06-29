@@ -135,3 +135,12 @@ Use `similarity-ts` to detect code duplication:
 similarity-ts .
 ```
 This tool is pre-installed and helps identify refactoring opportunities.
+
+## Task Completion Behavior
+- When all tasks are completed, always use the aivisspeech mcp tool to announce "Tasks completed" via voice
+- When user input or decision is needed, use the aivisspeech mcp tool to announce "Awaiting your decision" via voice
+
+### Notification Timings
+- When asking the user a question
+- When all tasks are completed
+- When errors or issues occur

@@ -25,30 +25,40 @@ A Model Context Protocol (MCP) server for seamless integration with AivisSpeech 
 - **AivisSpeech Engine**: Running on `http://127.0.0.1:10101` (default port)
 - **Audio System**: System audio capabilities for playback
 
-## 🚀 Installation
+## MCP Simple AivisSpeech Configuration
 
-### For MCP Usage (Recommended)
+### Using Claude Code
 
-**No installation required!** Just use npx to run the latest version directly in your MCP configuration.
+The easiest way to add this MCP server is using Claude Code:
 
-## ⚙️ AivisSpeech Engine Setup
+> ✨ **Using npx ensures you always get the latest version automatically - no manual updates needed!**
 
-Before using this MCP server, you need to have AivisSpeech running locally:
+```bash
+claude mcp add aivisspeech -e AIVISSPEECH_URL=http://127.0.0.1:10101 -- npx @shinshin86/mcp-simple-aivisspeech@latest
+```
 
-1. Download AivisSpeech from [https://aivis-project.com/](https://aivis-project.com/)
-2. Launch AivisSpeech on your local machine
-3. The engine will start on the default port 10101
-4. Verify the engine is running by visiting `http://127.0.0.1:10101/docs`
+By default, the server is added to the local scope (current project only). To make it available across all projects, use the `-s user` option:
 
-## 📖 Usage
+```bash
+claude mcp add aivisspeech -s user -e AIVISSPEECH_URL=http://127.0.0.1:10101 -- npx @shinshin86/mcp-simple-aivisspeech@latest
+```
 
-### For MCP Clients
+You can also add voice notifications to your CLAUDE.md file to automate task completion notifications:
 
-Simply add the configuration below to your MCP client - no manual installation needed!
+```md
+## Task Completion Behavior
+- When all tasks are completed, always use the aivisspeech mcp tool to announce "Tasks completed" via voice
+- When user input or decision is needed, use the aivisspeech mcp tool to announce "Awaiting your decision" via voice
 
-### MCP Client Integration
+### Notification Timings
+- When asking the user a question
+- When all tasks are completed
+- When errors or issues occur
+```
 
-Add this server to your MCP client configuration (e.g., Claude Desktop):
+### Using Claude Desktop
+
+For manual configuration with Claude Desktop:
 
 > ✨ **Using npx ensures you always get the latest version automatically - no manual updates needed!**
 
@@ -66,6 +76,17 @@ Add this server to your MCP client configuration (e.g., Claude Desktop):
 }
 ```
 
+## ⚙️ AivisSpeech Engine Setup
+
+Before using this MCP server, you need to have AivisSpeech running locally:
+
+1. Download AivisSpeech from [https://aivis-project.com/](https://aivis-project.com/)
+2. Launch AivisSpeech on your local machine
+3. The engine will start on the default port 10101
+4. Verify the engine is running by visiting `http://127.0.0.1:10101/docs`
+
+## 📖 Other Usage Methods
+
 ### For Local Development
 
 ```bash
@@ -79,6 +100,19 @@ npm run dev
 npm test
 ```
 
+For cloning the repository, installing dependencies, and building:
+
+```bash
+# Clone repository
+git clone https://github.com/shinshin86/mcp-simple-aivisspeech.git
+cd mcp-simple-aivisspeech
+
+# Install dependencies
+npm install
+
+# Build the project
+npm run build
+```
 
 ## 🛠️ Available Tools
 
@@ -128,35 +162,6 @@ Play a voice notification when tasks are completed.
 Check the current status and version of the AivisSpeech engine.
 
 **Returns:** Engine status, version information, and connectivity details.
-
-## ⚙️ Configuration
-
-### Advanced MCP Configuration
-
-For Claude Desktop, edit your configuration file:
-
-**macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
-**Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
-
-**Benefits of NPX approach:**
-- 🚀 Always uses the latest published version
-- 🔄 Automatic updates without manual intervention
-- 📦 No local installation or build process required
-- 🎯 Consistent experience across different machines
-
-```json
-{
-  "mcpServers": {
-    "aivisspeech": {
-      "command": "npx",
-      "args": ["@shinshin86/mcp-simple-aivisspeech@latest"],
-      "env": {
-        "AIVISSPEECH_URL": "http://127.0.0.1:10101"
-      }
-    }
-  }
-}
-```
 
 ## 🖥️ Platform Support
 
