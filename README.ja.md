@@ -25,43 +25,41 @@ AivisSpeech音声合成エンジンとシームレスに統合するためのMod
 - **AivisSpeechエンジン**: `http://127.0.0.1:10101` (デフォルトポート) で実行中
 - **オーディオシステム**: 再生のためのシステムオーディオ機能
 
-## 🚀 インストール
+## MCP Simple AivisSpeechの設定方法
 
-### MCP使用の場合（推奨）
+### Claude Codeを使用した設定（推奨）
 
-**インストール不要！** MCPの設定でnpxを使用して最新バージョンを直接実行するだけです。
+Claude Codeを使用すると、簡単にMCPサーバーを追加できます：
 
-## ⚙️ AivisSpeechエンジンのセットアップ
-
-このMCPサーバーを使用する前に、AivisSpeechをローカルで実行する必要があります：
-
-1. [https://aivis-project.com/](https://aivis-project.com/) からAivisSpeechをダウンロード
-2. ローカルマシンでAivisSpeechを起動
-3. エンジンはデフォルトポート10101で起動します
-4. `http://127.0.0.1:10101/docs` にアクセスしてエンジンが実行中であることを確認
-
-## 📖 使用方法
-
-### MCPクライアントの場合
-
-以下の設定をMCPクライアントに追加するだけです - 手動インストールは不要！
-
-### ローカル開発の場合
+> ✨ **npxを使用すると、常に最新バージョンが自動的に取得されます - 手動更新は不要！**
 
 ```bash
-# MCPサーバーを実行
-npm start
-
-# ホットリロードで開発
-npm run dev
-
-# すべてが動作しているか確認
-npm test
+claude mcp add aivisspeech -e AIVISSPEECH_URL=http://127.0.0.1:10101 -- npx @shinshin86/mcp-simple-aivisspeech@latest
 ```
 
-### MCPクライアント統合
+デフォルトでは、サーバーはローカルスコープ（現在のプロジェクトのみ）に追加されます。全プロジェクトで利用可能にしたい場合は、`-s user`オプションを使用してください：
 
-MCPクライアント設定（例：Claude Desktop）にこのサーバーを追加：
+```bash
+claude mcp add aivisspeech -s user -e AIVISSPEECH_URL=http://127.0.0.1:10101 -- npx @shinshin86/mcp-simple-aivisspeech@latest
+```
+
+また音声による通知を毎回指定するのが面倒な場合は `CLAUDE.md` に以下のような記載を追加するとよいでしょう。  
+（英語での `CLAUDE.md` の記載は [英語版](README.md) に記載しています）
+
+```md
+## タスク完了時の動作
+- 全てのタスクを完了したら、必ずaivisspeech mcpツールを使って「タスクが完了しました」と音声で通知してください
+- ユーザーの判断や確認が必要な場合も、aivisspeech mcpツールを使って「判断をお待ちしています」と音声で通知してください
+
+### 通知のタイミング
+- こちらに質問を実施したタイミング
+- タスクが全て完了したタイミング
+- エラーや問題が発生した時
+```
+
+### Claude Desktopを使用した設定
+
+Claude Desktopに手動でMCPサーバーを追加する場合：
 
 > ✨ **npxを使用すると、常に最新バージョンが自動的に取得されます - 手動更新は不要！**
 
@@ -79,7 +77,31 @@ MCPクライアント設定（例：Claude Desktop）にこのサーバーを追
 }
 ```
 
+## ⚙️ AivisSpeechエンジンのセットアップ
+
+このMCPサーバーを使用する前に、AivisSpeechをローカルで実行しておく必要があります：
+
+1. [https://aivis-project.com/](https://aivis-project.com/) からAivisSpeechをダウンロード
+2. ローカルマシンでAivisSpeechを起動
+3. エンジンはデフォルトポート10101で起動します
+4. `http://127.0.0.1:10101/docs` にアクセスしてエンジンが実行中であることを確認
+
+## 📖 その他の使用方法
+
 ### ローカル開発の場合
+
+```bash
+# MCPサーバーを実行
+npm start
+
+# ホットリロードで開発
+npm run dev
+
+# すべてが動作しているか確認
+npm test
+```
+
+リポジトリをクローン、依存関係のインストール、ビルドが必要な場合：
 
 ```bash
 # リポジトリをクローン
@@ -142,35 +164,6 @@ AivisSpeechエンジンの現在のステータスとバージョンを確認し
 
 **戻り値:** エンジンステータス、バージョン情報、接続詳細。
 
-## ⚙️ 設定
-
-### 高度なMCP設定
-
-Claude Desktopの場合、設定ファイルを編集：
-
-**macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
-**Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
-
-**NPXアプローチの利点:**
-- 🚀 常に最新の公開バージョンを使用
-- 🔄 手動介入なしの自動更新
-- 📦 ローカルインストールやビルドプロセス不要
-- 🎯 異なるマシン間で一貫した体験
-
-```json
-{
-  "mcpServers": {
-    "aivisspeech": {
-      "command": "npx",
-      "args": ["@shinshin86/mcp-simple-aivisspeech@latest"],
-      "env": {
-        "AIVISSPEECH_URL": "http://127.0.0.1:10101"
-      }
-    }
-  }
-}
-```
-
 ## 🖥️ プラットフォームサポート
 
 ### 音声再生システム
@@ -208,16 +201,6 @@ npm run test:coverage # カバレッジ付きでテストを実行
 # ユーティリティ
 npm run clean       # dist/ ディレクトリをクリーン
 ```
-
-### ローカル vs NPX使用
-
-**MCPクライアント（本番）の場合:**
-- MCP設定で `npx @shinshin86/mcp-simple-aivisspeech@latest` を使用
-- ローカルセットアップ不要、常に最新バージョンを取得
-
-**開発の場合:**
-- リポジトリをクローンし、ホットリロードのために `npm run dev` を使用
-- 本番ビルドのテストには `npm run build && npm start` を使用
 
 ### プロジェクト構成
 
