@@ -7,6 +7,12 @@
     "mcp-simple-aivisspeech": "dist/index.js"
   },
   "type": "module",
+  "files": [
+    "dist/**/*",
+    "LICENSE",
+    "README.md",
+    "README.ja.md"
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "tsx src/index.ts",
@@ -15,7 +21,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "mcp",
