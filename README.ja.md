@@ -39,7 +39,7 @@ Claude Codeで使用する場合、先にMCPサーバーを起動しておいて
 npx @shinshin86/mcp-simple-aivisspeech@latest
 ```
 
-2.Claude Code に MCP サーバーを登録
+2. Claude Code に MCP サーバーを登録
 
 ```bash
 claude mcp add aivisspeech -e AIVISSPEECH_URL=http://127.0.0.1:10101 -- npx @shinshin86/mcp-simple-aivisspeech@latest
