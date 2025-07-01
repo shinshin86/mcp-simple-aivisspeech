@@ -1,5 +1,7 @@
 # MCP Simple AivisSpeech
 
+![Project Logo](./images/mcp-simple-aivisspeech_logo.png)
+
 [English](README.md) | [日本語](README.ja.md)
 
 > 🙏 **特別な感謝**  
@@ -10,28 +12,28 @@ AivisSpeech音声合成エンジンとシームレスに統合するためのMod
 
 ## ✨ 機能
 
-- 🎙️ **音声合成**: AivisSpeechを使用した高品質な日本語音声合成
-- 👥 **複数の音声キャラクター**: 様々な話者と音声スタイルをサポート（デフォルト: Anneli ノーマル）
-- ⚙️ **設定可能なパラメータ**: 速度、ピッチ、音量、イントネーションの調整
-- 🔊 **クロスプラットフォーム音声再生**: macOS、Windows、Linuxでの自動音声再生
-- 🔔 **タスク通知**: プロセス完了時の音声通知
-- 🚀 **簡単な統合**: AIアシスタント統合のためのシンプルなMCPプロトコル
-- 📊 **エンジンステータス監視**: AivisSpeechエンジンのリアルタイムステータスチェック
-- 🛡️ **スマートなエラーハンドリング**: 話者の提案を含む役立つエラーメッセージ
+- 音声合成 - AivisSpeechを使用した高品質な日本語音声合成
+- 複数の音声キャラクター - 様々な話者と音声スタイルをサポート（デフォルト: Anneli ノーマル）
+- 設定可能なパラメータ - 速度、ピッチ、音量、イントネーションの調整
+- クロスプラットフォーム音声再生 - macOS、Windows、Linuxでの自動音声再生
+- タスク通知 - プロセス完了時の音声通知
+- 簡単な統合 - AIアシスタント統合のためのシンプルなMCPプロトコル
+- エンジンステータス監視 - AivisSpeechエンジンのリアルタイムステータスチェック
+- スマートなエラーハンドリング - 話者の提案を含む役立つエラーメッセージ
 
 ## 📋 前提条件
 
-- **Node.js**: バージョン18.0.0以上
-- **AivisSpeechエンジン**: `http://127.0.0.1:10101` (デフォルトポート) で実行中
-- **オーディオシステム**: 再生のためのシステムオーディオ機能
+- Node.js - バージョン18.0.0以上
+- AivisSpeechエンジン - `http://127.0.0.1:10101` (デフォルトポート) で実行中
+- オーディオシステム - 再生のためのシステムオーディオ機能
 
 ## MCP Simple AivisSpeechの設定方法
 
 ### Claude Codeを使用した設定
 
-Claude Codeで使用する場合、先にMCPサーバーを起動しておいてから利用する必要があります。
+Claude Codeで使用する場合、先にMCPサーバーを起動しておきます。
 
-> ✨ **npxを使用すると、常に最新バージョンが自動的に取得されます - 手動更新は不要！**
+> npxを使用すると、常に最新バージョンが自動的に取得されます。手動更新は不要です。
 
 1. AivisSpeech MCP サーバーをClaude Codeを利用するターミナルとは別のターミナル上で手動で起動しておく
 
@@ -82,7 +84,7 @@ claude mcp list
 
 Claude Desktopに手動でMCPサーバーを追加する場合は以下の設定を追加するだけで可能です：
 
-> ✨ **npxを使用すると、常に最新バージョンが自動的に取得されます - 手動更新は不要！**
+> npxを使用すると、常に最新バージョンが自動的に取得されます。手動更新は不要です。
 
 ```json
 {
@@ -100,7 +102,7 @@ Claude Desktopに手動でMCPサーバーを追加する場合は以下の設定
 
 ## ⚙️ AivisSpeechエンジンのセットアップ
 
-このMCPサーバーを使用する前に、AivisSpeechをローカルで実行しておく必要があります：
+このMCPサーバーを使用する前に、次の手順でAivisSpeechをローカルで実行しておきます。
 
 1. [https://aivis-project.com/](https://aivis-project.com/) からAivisSpeechをダウンロード
 2. ローカルマシンでAivisSpeechを起動
@@ -141,7 +143,7 @@ npm run build
 ### 🎤 `speak`
 カスタマイズ可能な音声パラメータでテキストを音声に変換し、音声を再生します。
 
-**パラメータ:**
+使用できるパラメータは以下のとおりです。
 - `text` *(必須)*: 音声に変換するテキスト
 - `speaker` *(オプション)*: 話者/音声ID（デフォルト: `888753760` - Anneli ノーマル）
 - `speedScale` *(オプション)*: 音声速度倍率（`0.5`-`2.0`、デフォルト: `1.0`）
@@ -149,7 +151,7 @@ npm run build
 - `volumeScale` *(オプション)*: 音量レベル（`0.0`-`2.0`、デフォルト: `1.0`）
 - `playAudio` *(オプション)*: 生成された音声を再生するかどうか（デフォルト: `true`）
 
-**例:**
+使用例
 ```json
 {
   "text": "こんにちは、世界！",
@@ -163,16 +165,16 @@ npm run build
 ### 👥 `get_speakers`
 利用可能なすべての音声キャラクターとそのスタイルのリストを取得します。
 
-**戻り値:** ID、名前、利用可能な音声スタイルを含む話者のリスト。
+この関数から返される値 ID、名前、利用可能な音声スタイルを含む話者のリスト。
 
 ### 🔔 `notify_completion`
 タスクが完了したときに音声通知を再生します。
 
-**パラメータ:**
+使用できるパラメータは以下のとおりです。
 - `message` *(オプション)*: アナウンスする完了メッセージ（デフォルト: `"処理が完了しました"`）
 - `speaker` *(オプション)*: 通知音声の話者ID（デフォルト: `888753760` - Anneli ノーマル）
 
-**例:**
+使用例
 ```json
 {
   "message": "データ処理が完了しました",
@@ -183,7 +185,7 @@ npm run build
 ### 📊 `check_engine_status`
 AivisSpeechエンジンの現在のステータスとバージョンを確認します。
 
-**戻り値:** エンジンステータス、バージョン情報、接続詳細。
+この関数から返される値 エンジンステータス、バージョン情報、接続詳細。
 
 ## 🖥️ プラットフォームサポート
 
@@ -197,10 +199,10 @@ AivisSpeechエンジンの現在のステータスとバージョンを確認し
 
 ### テスト済み環境
 
-- ✅ macOS 12+ (Intel & Apple Silicon)
-- ✅ Windows 10/11
-- ✅ Ubuntu 20.04+
-- ✅ Node.js 18.x, 20.x, 21.x
+- macOS 12+ (Intel & Apple Silicon)
+- Windows 10/11
+- Ubuntu 20.04+
+- Node.js 18.x, 20.x, 21.x
 
 ## 🧪 開発
 
@@ -239,11 +241,11 @@ mcp-simple-aivisspeech/
 
 ### APIクライアントアーキテクチャ
 
-`AivisSpeechClient`クラスが提供するもの：
-- **HTTPクライアント**: AxiosベースのAPI通信
-- **エラーハンドリング**: 包括的なエラーキャッチとレポート
-- **型安全性**: すべてのAPIレスポンスに対する完全なTypeScriptインターフェース
-- **接続管理**: ヘルスチェックとステータス監視
+`AivisSpeechClient`クラスは、以下のような機能を提供しています。
+- HTTPクライアント - AxiosベースのAPI通信
+- エラーハンドリング - 包括的なエラーキャッチとレポート
+- 型安全性 - すべてのAPIレスポンスに対する完全なTypeScriptインターフェース
+- 接続管理 - ヘルスチェックとステータス監視
 
 ### 新機能の追加
 
@@ -260,26 +262,26 @@ mcp-simple-aivisspeech/
 ```
 Error: Failed to get version: connect ECONNREFUSED 127.0.0.1:10101
 ```
-**解決策:** AivisSpeechエンジンが正しいポートで実行されていることを確認してください。
+この問題を解決するには、次の方法を試してください。 AivisSpeechエンジンが正しいポートで実行されていることを確認してください。
 
 #### 音声再生の失敗
 ```
 Error: Audio player exited with code 1
 ```
-**解決策:**
-- **macOS**: `afplay` が利用可能か確認
-- **Linux**: ALSA utilsをインストール: `sudo apt install alsa-utils`
-- **Windows**: PowerShellの実行ポリシーがスクリプトを許可していることを確認
+この問題を解決するには、次の方法を試してください。
+- macOS - `afplay` が利用可能か確認
+- Linux - ALSA utilsをインストール（`sudo apt install alsa-utils`）
+- Windows - PowerShellの実行ポリシーがスクリプトを許可していることを確認
 
 #### 権限拒否
 ```
 Error: spawn afplay EACCES
 ```
-**解決策:** ファイルの権限とシステムオーディオ設定を確認してください。
+この問題を解決するには、次の方法を試してください。 ファイルの権限とシステムオーディオ設定を確認してください。
 
 ### デバッグモード
 
-詳細なログを有効化：
+詳細なログを有効化するには、次のコマンドを実行します。
 ```bash
 DEBUG=mcp-aivisspeech npm run dev
 ```
@@ -290,7 +292,7 @@ DEBUG=mcp-aivisspeech npm run dev
 
 ## 🤝 貢献
 
-貢献を歓迎します！以下の手順に従ってください：
+貢献を歓迎します。貢献をする際は、以下の手順に従ってください。
 
 1. リポジトリを**フォーク**
 2. フィーチャーブランチを**作成** (`git checkout -b feature/amazing-feature`)
@@ -313,9 +315,9 @@ DEBUG=mcp-aivisspeech npm run dev
 
 ## 📞 サポート
 
-- **Issues**: [GitHub Issues](https://github.com/shinshin86/mcp-simple-aivisspeech/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/shinshin86/mcp-simple-aivisspeech/discussions)
-- **Documentation**: [AivisSpeech API Docs](https://aivis-project.github.io/AivisSpeech-Engine/api/)
+- Issues - [GitHub Issues](https://github.com/shinshin86/mcp-simple-aivisspeech/issues)
+- Discussions - [GitHub Discussions](https://github.com/shinshin86/mcp-simple-aivisspeech/discussions)
+- Documentation - [AivisSpeech API Docs](https://aivis-project.github.io/AivisSpeech-Engine/api/)
 
 ---
 
