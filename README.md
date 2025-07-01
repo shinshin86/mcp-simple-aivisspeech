@@ -10,28 +10,28 @@ A Model Context Protocol (MCP) server for seamless integration with AivisSpeech 
 
 ## ✨ Features
 
-- 🎙️ **Text-to-Speech Conversion**: High-quality Japanese speech synthesis using AivisSpeech
-- 👥 **Multiple Voice Characters**: Support for various speakers and voice styles (default: Anneli ノーマル)
-- ⚙️ **Configurable Parameters**: Adjust speed, pitch, volume, and intonation
-- 🔊 **Cross-Platform Audio**: Automatic audio playback on macOS, Windows, and Linux
-- 🔔 **Task Notifications**: Voice notifications for process completion
-- 🚀 **Easy Integration**: Simple MCP protocol for AI assistant integration
-- 📊 **Engine Status Monitoring**: Real-time status checking of AivisSpeech engine
-- 🛡️ **Smart Error Handling**: Helpful error messages with speaker suggestions
+- Text-to-Speech Conversion - High-quality Japanese speech synthesis using AivisSpeech
+- Multiple Voice Characters - Support for various speakers and voice styles (default: Anneli ノーマル)
+- Configurable Parameters - Adjust speed, pitch, volume, and intonation
+- Cross-Platform Audio - Automatic audio playback on macOS, Windows, and Linux
+- Task Notifications - Voice notifications for process completion
+- Easy Integration - Simple MCP protocol for AI assistant integration
+- Engine Status Monitoring - Real-time status checking of AivisSpeech engine
+- Smart Error Handling - Helpful error messages with speaker suggestions
 
 ## 📋 Prerequisites
 
-- **Node.js**: Version 18.0.0 or higher
-- **AivisSpeech Engine**: Running on `http://127.0.0.1:10101` (default port)
-- **Audio System**: System audio capabilities for playback
+- Node.js - Version 18.0.0 or higher
+- AivisSpeech Engine - Running on `http://127.0.0.1:10101` (default port)
+- Audio System - System audio capabilities for playback
 
 ## MCP Simple AivisSpeech Configuration
 
 ### Using Claude Code
 
-When using Claude Code, you need to start the MCP server manually before using it.
+When using Claude Code, start the MCP server manually before using it.
 
-> ✨ **Using npx ensures you always get the latest version automatically - no manual updates needed!**
+> Using npx ensures you always get the latest version automatically. No manual updates needed.
 
 1. Start the AivisSpeech MCP server manually in a separate terminal from the one where you're using Claude Code
 
@@ -81,7 +81,7 @@ If `aivisspeech` is displayed, the setup was successful.
 
 For manual configuration with Claude Desktop, you can simply add the following configuration:
 
-> ✨ **Using npx ensures you always get the latest version automatically - no manual updates needed!**
+> Using npx ensures you always get the latest version automatically. No manual updates needed.
 
 ```json
 {
@@ -99,7 +99,7 @@ For manual configuration with Claude Desktop, you can simply add the following c
 
 ## ⚙️ AivisSpeech Engine Setup
 
-Before using this MCP server, you need to have AivisSpeech running locally:
+Before using this MCP server, complete these setup steps to ensure AivisSpeech is running locally.
 
 1. Download AivisSpeech from [https://aivis-project.com/](https://aivis-project.com/)
 2. Launch AivisSpeech on your local machine
@@ -140,7 +140,7 @@ npm run build
 ### 🎤 `speak`
 Convert text to speech and play audio with customizable voice parameters.
 
-**Parameters:**
+This tool accepts several configuration parameters, including the following options:
 - `text` *(required)*: Text to convert to speech
 - `speaker` *(optional)*: Speaker/voice ID (default: `888753760` - Anneli ノーマル)
 - `speedScale` *(optional)*: Speech speed multiplier (`0.5`-`2.0`, default: `1.0`)
@@ -148,7 +148,7 @@ Convert text to speech and play audio with customizable voice parameters.
 - `volumeScale` *(optional)*: Volume level (`0.0`-`2.0`, default: `1.0`)
 - `playAudio` *(optional)*: Whether to play the generated audio (default: `true`)
 
-**Example:**
+Example usage:
 ```json
 {
   "text": "こんにちは、世界！",
@@ -162,16 +162,16 @@ Convert text to speech and play audio with customizable voice parameters.
 ### 👥 `get_speakers`
 Retrieve a list of all available voice characters and their styles.
 
-**Returns:** List of speakers with their IDs, names, and available voice styles.
+This function returns: List of speakers with their IDs, names, and available voice styles.
 
 ### 🔔 `notify_completion`
 Play a voice notification when tasks are completed.
 
-**Parameters:**
+This tool accepts several configuration parameters, including the following options:
 - `message` *(optional)*: Completion message to announce (default: `"処理が完了しました"`)
 - `speaker` *(optional)*: Speaker ID for the notification voice (default: `888753760` - Anneli ノーマル)
 
-**Example:**
+Example usage:
 ```json
 {
   "message": "データ処理が完了しました",
@@ -182,7 +182,7 @@ Play a voice notification when tasks are completed.
 ### 📊 `check_engine_status`
 Check the current status and version of the AivisSpeech engine.
 
-**Returns:** Engine status, version information, and connectivity details.
+This function returns: Engine status, version information, and connectivity details.
 
 ## 🖥️ Platform Support
 
@@ -196,10 +196,10 @@ Check the current status and version of the AivisSpeech engine.
 
 ### Tested Environments
 
-- ✅ macOS 12+ (Intel & Apple Silicon)
-- ✅ Windows 10/11
-- ✅ Ubuntu 20.04+
-- ✅ Node.js 18.x, 20.x, 21.x
+- macOS 12+ (Intel & Apple Silicon)
+- Windows 10/11
+- Ubuntu 20.04+
+- Node.js 18.x, 20.x, 21.x
 
 ## 🧪 Development
 
@@ -224,13 +224,9 @@ npm run clean       # Clean dist/ directory
 
 ### Local vs NPX Usage
 
-**For MCP clients (Production):**
-- Use `npx @shinshin86/mcp-simple-aivisspeech@latest` in your MCP configuration
-- No local setup required, always gets latest version
+When using MCP clients in production, use `npx @shinshin86/mcp-simple-aivisspeech@latest` in your MCP configuration. No local setup is required, and you always get the latest version.
 
-**For development:**
-- Clone repository and use `npm run dev` for hot reload
-- Use `npm run build && npm start` for testing production builds
+For development, clone the repository and use `npm run dev` for hot reload, or `npm run build && npm start` for testing production builds.
 
 ### Project Architecture
 
@@ -248,11 +244,11 @@ mcp-simple-aivisspeech/
 
 ### API Client Architecture
 
-The `AivisSpeechClient` class provides:
-- **HTTP Client**: Axios-based API communication
-- **Error Handling**: Comprehensive error catching and reporting
-- **Type Safety**: Full TypeScript interfaces for all API responses
-- **Connection Management**: Health checks and status monitoring
+The `AivisSpeechClient` class offers comprehensive functionality, providing several key capabilities:
+- HTTP Client - Axios-based API communication
+- Error Handling - Comprehensive error catching and reporting
+- Type Safety - Full TypeScript interfaces for all API responses
+- Connection Management - Health checks and status monitoring
 
 ### Adding New Features
 
@@ -269,26 +265,26 @@ The `AivisSpeechClient` class provides:
 ```
 Error: Failed to get version: connect ECONNREFUSED 127.0.0.1:10101
 ```
-**Solution:** Ensure AivisSpeech Engine is running on the correct port.
+Consider these troubleshooting approaches to resolve this issue: Ensure AivisSpeech Engine is running on the correct port.
 
 #### Audio Playback Fails
 ```
 Error: Audio player exited with code 1
 ```
-**Solutions:**
-- **macOS**: Check if `afplay` is available
-- **Linux**: Install ALSA utils: `sudo apt install alsa-utils`
-- **Windows**: Ensure PowerShell execution policy allows scripts
+Consider these troubleshooting approaches to resolve this issue:
+- macOS - Check if `afplay` is available
+- Linux - Install ALSA utils (`sudo apt install alsa-utils`)
+- Windows - Ensure PowerShell execution policy allows scripts
 
 #### Permission Denied
 ```
 Error: spawn afplay EACCES
 ```
-**Solution:** Check file permissions and system audio settings.
+Consider these troubleshooting approaches to resolve this issue: Check file permissions and system audio settings.
 
 ### Debug Mode
 
-Enable verbose logging:
+To enable verbose logging, run the following command:
 ```bash
 DEBUG=mcp-aivisspeech npm run dev
 ```
@@ -299,7 +295,7 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 
 ## 🤝 Contributing
 
-We welcome contributions! Please follow these steps:
+We welcome contributions from the community. Contributors can get started by completing these essential steps:
 
 1. **Fork** the repository
 2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
@@ -322,9 +318,9 @@ We welcome contributions! Please follow these steps:
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/shinshin86/mcp-simple-aivisspeech/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/shinshin86/mcp-simple-aivisspeech/discussions)
-- **Documentation**: [AivisSpeech API Docs](https://aivis-project.github.io/AivisSpeech-Engine/api/)
+- Issues - [GitHub Issues](https://github.com/shinshin86/mcp-simple-aivisspeech/issues)
+- Discussions - [GitHub Discussions](https://github.com/shinshin86/mcp-simple-aivisspeech/discussions)
+- Documentation - [AivisSpeech API Docs](https://aivis-project.github.io/AivisSpeech-Engine/api/)
 
 ---
 
