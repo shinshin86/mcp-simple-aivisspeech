@@ -29,9 +29,17 @@ AivisSpeech音声合成エンジンとシームレスに統合するためのMod
 
 ### Claude Codeを使用した設定
 
-Claude Codeを使用すると、簡単にMCPサーバーを追加できます：
+Claude Codeで使用する場合、先にMCPサーバーを起動しておいてから利用する必要があります。
 
 > ✨ **npxを使用すると、常に最新バージョンが自動的に取得されます - 手動更新は不要！**
+
+1. AivisSpeech MCP サーバーをClaude Codeを利用するターミナルとは別のターミナル上で手動で起動しておく
+
+```bash
+npx @shinshin86/mcp-simple-aivisspeech@latest
+```
+
+2.Claude Code に MCP サーバーを登録
 
 ```bash
 claude mcp add aivisspeech -e AIVISSPEECH_URL=http://127.0.0.1:10101 -- npx @shinshin86/mcp-simple-aivisspeech@latest
@@ -57,9 +65,22 @@ claude mcp add aivisspeech -s user -e AIVISSPEECH_URL=http://127.0.0.1:10101 -- 
 - エラーや問題が発生した時
 ```
 
+3. ツールが認識されたか確認
+
+```bash
+claude mcp list
+
+# またはClaude Codeを立ち上げて
+/mcp
+```
+
+`aivisspeech` が表示されていれば成功です。
+
+> 💡 ポイント: Claude Codeは安全のためコマンドを自動実行しません。サーバーを起動し忘れるとツールが表示されないので、開発中はターミナルで上記 `npx` コマンドを常駐させるか、`pm2` や `systemd --user` などで常駐化することを推奨します。
+
 ### Claude Desktopを使用した設定
 
-Claude Desktopに手動でMCPサーバーを追加する場合：
+Claude Desktopに手動でMCPサーバーを追加する場合は以下の設定を追加するだけで可能です：
 
 > ✨ **npxを使用すると、常に最新バージョンが自動的に取得されます - 手動更新は不要！**
 

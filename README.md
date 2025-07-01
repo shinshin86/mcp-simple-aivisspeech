@@ -29,9 +29,17 @@ A Model Context Protocol (MCP) server for seamless integration with AivisSpeech 
 
 ### Using Claude Code
 
-The easiest way to add this MCP server is using Claude Code:
+When using Claude Code, you need to start the MCP server manually before using it.
 
 > ✨ **Using npx ensures you always get the latest version automatically - no manual updates needed!**
+
+1. Start the AivisSpeech MCP server manually in a separate terminal from the one where you're using Claude Code
+
+```bash
+npx @shinshin86/mcp-simple-aivisspeech@latest
+```
+
+2. Register the MCP server with Claude Code
 
 ```bash
 claude mcp add aivisspeech -e AIVISSPEECH_URL=http://127.0.0.1:10101 -- npx @shinshin86/mcp-simple-aivisspeech@latest
@@ -56,9 +64,22 @@ You can also add voice notifications to your CLAUDE.md file to automate task com
 - When errors or issues occur
 ```
 
+3. Verify the tools are recognized
+
+```bash
+claude mcp list
+
+# Or launch Claude Code and use
+/mcp
+```
+
+If `aivisspeech` is displayed, the setup was successful.
+
+> 💡 Tip: Claude Code doesn't auto-execute commands for safety. If you forget to start the server, the tools won't appear. During development, keep the above `npx` command running in a terminal, or use process managers like `pm2` or `systemd --user` for persistent operation.
+
 ### Using Claude Desktop
 
-For manual configuration with Claude Desktop:
+For manual configuration with Claude Desktop, you can simply add the following configuration:
 
 > ✨ **Using npx ensures you always get the latest version automatically - no manual updates needed!**
 
