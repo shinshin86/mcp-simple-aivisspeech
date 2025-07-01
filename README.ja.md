@@ -1,5 +1,7 @@
 # MCP Simple AivisSpeech
 
+![Project Logo](./images/mcp-simple-aivisspeech_logo.png)
+
 [English](README.md) | [日本語](README.ja.md)
 
 > 🙏 **特別な感謝**  
